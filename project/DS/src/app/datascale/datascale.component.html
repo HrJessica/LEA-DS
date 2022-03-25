@@ -1,0 +1,47 @@
+<div id="data">
+    <h2>Data-scaling</h2>
+</div>
+<form class="Lea-data" (ngSubmit)="sendData(dataFrm)" #dataFrm ="ngForm">
+    <!-- Name input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form5Example1">Topic Number</label>
+      <input type="text" id="form5Example1" class="form-control" name = "topic_number" [(ngModel)]="myData.topic_number"/>
+    </div>
+  
+    
+    <div class="formfield-select">
+	
+        <label for="mon_select" >Angle Name</label>
+        
+        <div class="formfield-select--container">
+            
+            <select id="mon_select" name = "angle_name" [(ngModel)]="myData.angle_name">
+                <option>Fn</option>
+                <option>Ft</option>
+                <option>Rn</option>
+                <option>Rt</option>
+                <option>At</option>
+                <option>An</option>
+            </select>
+    
+        </div>
+        
+    </div>
+    <div class="formfield-select">
+	
+        <label for="mon_select" >View</label>
+        
+        <div class="formfield-select--container">
+            
+            <select id="mon_select" name = "vue" [(ngModel)]="myData.vue">
+                <option>Face</option>
+                <option>Back</option>
+                <option>Profile</option>
+            </select>
+    
+        </div>
+        
+    </div>
+
+     <button type="submit" class="btn btn-primary btn-block mb-4">Send</button>
+    </form>

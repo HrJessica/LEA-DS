@@ -1,0 +1,14 @@
+.vertical { 
+    border-left: 2px solid black; 
+    height: 100%; 
+    display: inline-block;
+    } 
+.image{
+    margin-top: 7%;
+    margin-bottom: 5%;
+    margin-left: 20%;
+}
+.container{
+    margin-left: 5%;
+    margin-right: 10%;
+}

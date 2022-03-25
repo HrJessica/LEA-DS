@@ -1,0 +1,80 @@
+.form-control{
+    width: 50%;
+    border-color: #239BD1;
+}
+#form5Example1,#form5Example2{
+    height:48px ;
+}
+.btn-block{
+    width: 50%;
+    font-weight: bolder;
+}
+.Lea-data{
+    margin-left: 35%;
+}
+.formfield-select {
+	position: relative;
+}
+
+.formfield-select--container {
+	position: relative; 
+	
+	background-color: #fff;
+	border: #239DB1 1px solid;
+	margin: 0 0 1.5em 0;
+	
+	overflow: hidden; 
+    width: 50%;
+    border-radius: 5px;
+}
+.formfield-select--container select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	/* 
+		On est sûr de ne plus voir
+		la flèche native 
+	*/
+	
+	height: auto;
+	border: 0; 
+	margin: 0;
+	padding: .75em;
+	border-radius: 0;
+	width: 110%;
+    background-color: #ffff;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	/* 
+		On empêche le texte d'aller
+		jusqu'au bout s'il est trop long
+	*/
+
+}
+.formfield-select--container::after { 
+	/* Le pointeur du select */
+	content: '';
+	position: absolute;
+	top: 50%; 
+	margin-top: -3px;
+	right: .75em;  
+	display: block; 
+	width: 0; height: 0;
+	border-color: transparent;
+	border-top-color: #444; 
+	border-width: 6px;
+	border-style: solid;
+	pointer-events: none;
+}
+#data{
+    background-color: #ff9900;
+    margin-left: 4%;
+}
+#data h2{
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    padding: 0.25%;
+    margin-left: 35%;
+
+}

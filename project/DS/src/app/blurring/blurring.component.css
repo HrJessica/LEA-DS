@@ -1,0 +1,148 @@
+#blur{
+    background-color: #ff9900;
+    margin-left: 4%;
+}
+#blur h2{
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    padding: 0.25%;
+    margin-left: 35%;
+
+}
+.uploaded{
+    padding: 0.25%;
+    margin-left:38% ;
+    margin-top: 3%;
+}
+.file {
+    opacity: 0;
+    width: 0.1px;
+    height: 0.1px;
+    position: absolute;
+  }
+  .file-input label {
+    display: block;
+    position: relative;
+    width: 230px;
+    height: 50px;
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888888;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform .2s ease-out;
+  }
+  input:hover + label,
+input:focus + label {
+  transform: scale(1.02);
+}
+input:focus + label {
+    outline: 1px solid #000;
+    outline: -webkit-focus-ring-color auto 2px;
+  }
+.btn-success{
+    display: block;
+    position: relative;
+    width: 230px;
+    height: 50px;
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 23px;
+    font-weight: bold;
+    background-color: green;
+    margin-top: 2%;
+  
+}
+.btn-success:hover{
+    background-color: rgb(140, 180, 140);
+}
+
+body {
+  background: #222;
+  text-align: center;
+  padding: 20%;
+}
+.loading h2 {
+  color: #888888;
+  margin-top: 5%;
+  margin-left: 12%;
+  font: .8em verdana;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+/*
+ * Loading Dots
+ * Can we use pseudo elements here instead :after?
+ */
+.loading span {
+  display: inline-block;
+  vertical-align: middle;
+  width: .9em;
+  height: .9em;
+  margin: .19em;
+  background: #007DB6;
+  border-radius: .6em;
+  animation: loading 1s infinite alternate;
+}
+
+/*
+ * Dots Colors
+ * Smarter targeting vs nth-of-type?
+ */
+.loading span:nth-of-type(2) {
+  background: #008FB2;
+  animation-delay: 0.2s;
+}
+.loading span:nth-of-type(3) {
+  background: #009B9E;
+  animation-delay: 0.4s;
+}
+.loading span:nth-of-type(4) {
+  background: #00A77D;
+  animation-delay: 0.6s;
+}
+.loading span:nth-of-type(5) {
+  background: #00B247;
+  animation-delay: 0.8s;
+}
+.loading span:nth-of-type(6) {
+  background: #5AB027;
+  animation-delay: 1.0s;
+}
+.loading span:nth-of-type(7) {
+  background: #A0B61E;
+  animation-delay: 1.2s;
+}
+.loading span:nth-of-type(8) {
+  background: #00B247;
+  animation-delay: 0.8s;
+}
+.loading span:nth-of-type(9) {
+  background: #5AB027;
+  animation-delay: 1.0s;
+}
+.loading span:nth-of-type(10) {
+  background: #A0B61E;
+  animation-delay: 1.2s;
+}
+
+/*
+ * Animation keyframes
+ * Use transition opacity instead of keyframes?
+ */
+@keyframes loading {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
