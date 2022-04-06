@@ -12,7 +12,7 @@
    </form>
       
     <!--Flag variable is used here-->
-    <div class="loading">
+    <div class="loading" *ngIf = "_video.loading">
       <h2>Loading</h2>
       <span></span>
       <span></span>
@@ -26,7 +26,6 @@
       <span></span>
       <span></span>
     </div>
-    
   <script>
       const file = document.querySelector('#file');
 file.addEventListener('change', (e) => {

@@ -9,26 +9,24 @@
         <th scope="col"></th>
         <th scope="col">Date</th>
         <th scope="col">Identity</th>
-        <th scope="col">score</th>
+        <th scope="col">Angle</th>
         <th scope="col">Result file</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
+      
+      <tr *ngFor="let item of topicsToDisplay">
         <th scope="row"></th>
-        <td>28 janvier</td>
-        <td>sujet24 vue de dos</td>
-        <td>0.96</td>
-        <th scope="col"><i class = 'fa fa-file'></i></th>
-      </tr>
-      <tr>
-        <th scope="row"></th>
-        <td>23 août</td>
-        <td>sjet12 vue de profil</td>
-        <td>0.99</td>
-        <td><i class = 'fa fa-file'></i></td>
+        <td>{{item[4]}}</td>
+        <td>{{item[1]}}</td>
+        <td>{{item[2]}}</td>
+        <th scope="col" class="text-center"><button (click)="download(item)"><i class = 'fa fa-file'></i></button></th>
       </tr>
     </tbody>
   </table>
   
+
+<app-pagination [current]="current" [total]="total" (goTo)="onGoTo($event)" (next)="onNext($event)" (previous)="onPrevious($event)" ></app-pagination>
+
+
 </div>

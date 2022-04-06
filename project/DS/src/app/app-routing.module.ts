@@ -6,9 +6,10 @@ import { CsvComponent } from './csv/csv.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DatascaleComponent } from './datascale/datascale.component';
 import { HeadersComponent } from './headers/headers.component';
-import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { PklComponent } from './pkl/pkl.component';
+import { TrainComponent } from './train/train.component';
 import { VideoDownloadComponent } from './video-download/video-download.component';
-
+import { PredictFileComponent } from './predict-file/predict-file.component';
 const routes: Routes = [
   {
     path: '',
@@ -32,12 +33,25 @@ const routes: Routes = [
     component: CsvComponent
   },
   {
+    path: 'predict',
+    component: PredictFileComponent
+  },
+
+  {
     path: 'download',
     component: VideoDownloadComponent
   },
   {
     path: 'temporary',
     component: HeadersComponent
+  },
+  {
+    path: 'train',
+    component: TrainComponent
+  },
+  {
+    path: 'model_down',
+    component: PklComponent
   },
   { path: '',   redirectTo: '/', pathMatch: 'full' },
 ];

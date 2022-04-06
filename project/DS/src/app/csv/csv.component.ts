@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FileService } from '../service/file.service';
 import { saveAs} from 'file-saver';
 import { ScaleserviceService } from '../service/scaleservice.service';
+
 import { map } from 'rxjs';
 @Component({
   selector: 'app-csv',
@@ -12,8 +12,13 @@ export class CsvComponent {
 
   	title = 'Angular File Download From Server';
 	public data!:string;
-	constructor(private fileData: ScaleserviceService ) {
-		this.data = fileData.getOption()
+	public predict!:string;
+	constructor(
+		private fileData: ScaleserviceService
+		
+	) {
+		this.data = fileData.getOption();
+		
 	}
 	
 	download() {

@@ -15,7 +15,10 @@ import { HeadersComponent } from './headers/headers.component';
 import { AngularFileUploaderModule } from "angular-file-uploader";
 import { CsvComponent } from './csv/csv.component';
 import { VideoDownloadComponent } from './video-download/video-download.component';
-import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import { TrainComponent } from './train/train.component';
+import { PklComponent } from './pkl/pkl.component';
+import { PredictFileComponent } from './predict-file/predict-file.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +32,11 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
     HeadersComponent,
     CsvComponent,
     VideoDownloadComponent,
-    ProgressBarComponent
+    PaginationComponent,
+    TrainComponent,
+    PklComponent,
+    PredictFileComponent,
+   
   ],
   imports: [
     BrowserModule,

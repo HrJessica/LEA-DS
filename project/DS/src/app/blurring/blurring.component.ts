@@ -21,7 +21,7 @@ export class BlurringComponent implements OnInit {
   onChange(event) {
     
     this._video.file = event.target.files[0]
-    console.log(event)
+    
   }
   onUpload(){
     this._video.loading = !this._video.loading;

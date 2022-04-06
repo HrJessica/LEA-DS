@@ -1,0 +1,38 @@
+
+<div class="container m-2">
+	<div class="row no-gutters">
+        <div class="col-lg-10 col-md-12 ml-auto">
+			
+			<div class="row no-gutters">
+			<div class="col-lg-1 col-md-1 ml-auto">	
+			</div>
+			<div class="col-lg-6 col-md-2 ml-auto personalize">	
+				<img src = '../../assets/undraw_click_here_re_y6uq.svg'>
+			</div>
+			<div class="col-lg-5 col-md-5 ml-auto">
+			
+				
+				<div class="text-center">
+					<div class="score">score :{{score}}</div>
+					<img src = '../../assets/pl.png' width="200px">
+					
+				</div>
+				<div class="text-center"><button class = 'btn btn-lg btn-success' (click)="download_pkl()">Download your model</button></div>
+				<div class="text-center"><button class = 'btn btn-lg btn-warning' (click)="test_model()">Test your model</button></div>
+					<div *ngIf="test">
+						<label for="upload">
+							<i class="fa fa-paperclip" aria-hidden="true"></i>{{csvName}}
+						</label>
+						<input type="file"  id="upload" accept = '.json,.xls,.csv' (change)="onFileChanged($event)">
+						<button class="btn btn-primary" (click)="send()"><i class='fa fa-send'></i></button>
+					
+				</div>
+					
+			
+        
+		</div>
+		</div>
+	</div>
+</div>
+</div>
+	

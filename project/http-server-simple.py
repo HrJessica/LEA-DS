@@ -1,4 +1,5 @@
 
+from fileinput import filename
 from flask import Flask, redirect,render_template,request,jsonify, send_from_directory,url_for
 import flask
 from werkzeug.utils import secure_filename
@@ -16,6 +17,13 @@ import torch
 import torch.backends.cudnn as cudnn
 from pathlib import Path
 import datetime
+from sklearn.neural_network import MLPRegressor
+from sklearn.datasets import make_regression
+from sklearn.model_selection import train_test_split
+from scipy.signal import savgol_filter
+from sklearn.preprocessing import StandardScaler
+from sklearn import preprocessing
+import base64
 secret_key = secrets.token_hex(16)
 
 UPLOAD_FOLDER = '/home/jessica/appl_RN/project/static/UploadVideo'
@@ -143,7 +151,7 @@ def scale():
                     
                 return jsonify(output)
             else:     
-                return 'This topic is not available', 401
+                return jsonify('This topic is not available'), 203
             
     else:
         return render_template('index.html')
@@ -156,12 +164,102 @@ def dashboard():
                         db='MYDB',
                 )
     cur = conn.cursor()
-    cur.execute('SELECT topic_name,angle_name,dates FROM Datas')
+    cur.execute('SELECT * FROM Datas')
     liste = cur.fetchall()
-    print(liste)
-    conn.close()         
-    return jsonify(liste)     
-        
+    new_liste = []
+    conn.close()
+    for item in liste:
+        output  = str(marshal.loads(item[3])) 
+        new_liste.append([item[0],item[1],item[2],output,item[4]])    
+    return jsonify(new_liste)
+def rectify_list(liste):
+    for x in range(len(liste)-1):
+        #liste[x] = liste[x].strip()
+        liste[x] = float(liste[x])
+    liste[len(liste)-1] = float(liste[len(liste)-1][:-1]) # pour enlever le ; du dernier element de la liste
+    liste = np.array(liste)
+    
+    return liste
+def MLPR(X,Y,model_name):
+    X = X.reshape(-1,1)
+    #lissage par Savitzky-Golay ou savgol
+    np.set_printoptions(precision=2)
+    X = savgol_filter(X, 7, 2, mode='nearest')
+    X_train, X_test, Y_train, Y_test = train_test_split(X, Y,test_size=0.2,random_state=0)
+    regr = MLPRegressor(hidden_layer_sizes=(5,18,20,10,20,18,5,3),random_state = 1,max_iter=400000).fit(X_train,Y_train)
+    score_train = regr.score(X_train, Y_train)
+    score_test = regr.score(X_test,Y_test)
+    print(score_train)
+    print(score_test)
+    #save model
+    filename = model_name+'.pkl'
+    pickle.dump(regr, open(filename,'wb'))
+    return filename,score_train
+@app.route('/build',methods=['GET', 'POST'])
+def build_model():
+    if request.method == 'POST':
+       data = request.data
+       data = data.decode(encoding='utf-8')
+       data = eval(data)
+
+       #rectify datas
+       X=(data[0].split(';\n'))
+       del X[len(X)-1]
+    
+       Y=(data[1].split(';\n'))
+       del Y[len(Y)-1]
+       model_name = data[2]
+       X = rectify_list(X)
+       Y = rectify_list(Y)
+       filename,score = MLPR(X,Y,model_name)
+       with open(filename,'rb') as f:
+           blob = base64.b64encode(f.read())
+    
+       #save
+       conn = pymysql.connect(
+                        host='localhost',
+                        user='root', 
+                        password = "password",
+                        db='MYDB',
+                )
+       cur = conn.cursor()
+       cur.execute("INSERT INTO Model_pkl(model_name,model,score_train) VALUES(%s,%s,%s)",(filename,blob,score))
+       conn.commit()
+       conn.close()
+    os.remove(filename)
+    blob = blob.decode('utf-8')
+    return jsonify(score,filename,blob)
+@app.route('/use_model',methods=['GET', 'POST'])
+def use_model():
+    data = request.data
+    data = data.decode(encoding='utf-8')
+    data = eval(data)
+    
+    X=(data[0].split(';\n'))
+    X = rectify_list(X)
+    X = X.reshape(-1,1)
+    conn = pymysql.connect(
+                        host='localhost',
+                        user='root', 
+                        password = "password",
+                        db='MYDB',
+    )
+    cur = conn.cursor()
+                        
+    cur.execute("SELECT model FROM Model_pkl WHERE model_name=%s",data[2])
+    model = cur.fetchone()
+    conn.close()
+    model_byte = model[0]
+    model = base64.b64decode(model_byte)
+    #réecrire le model dans le disque du serveur
+    with open(data[2], 'wb') as file:
+        file.write(model)
+    #load model
+    m = pickle.load(open(data[2],'rb'))
+    y_predict = m.predict(X)
+    print(y_predict)
+    os.remove(data[2])
+    return jsonify(list(y_predict))
 @app.errorhandler(404)
 def page_not_found(error):
     return 'This page does not exist', 404

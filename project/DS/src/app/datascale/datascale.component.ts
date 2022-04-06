@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ScaleserviceService } from '../service/scaleservice.service';
 import { Data } from './data';
@@ -11,7 +11,8 @@ import { map } from 'rxjs';
 })
 export class DatascaleComponent implements OnInit {
   myData = new Data(0,'','');
-  
+  @Input() message;
+  public msgIsNull: boolean = false;
   constructor(
     private router: Router ,
     private scale:ScaleserviceService
@@ -19,11 +20,11 @@ export class DatascaleComponent implements OnInit {
 
   
   ngOnInit(): void {
-    
+    this.msgIsNull = false;
   }
   public sendData(dataForm: NgForm){
-    console.log(dataForm.form);
-    console.log('la valeur: ',JSON.stringify(dataForm.value));
+    /*console.log(dataForm.form);
+    console.log('la valeur: ',JSON.stringify(dataForm.value));*/
     this.scale.send_post_request(dataForm.value)
     .subscribe(
       res => {
@@ -33,14 +34,16 @@ export class DatascaleComponent implements OnInit {
           
           this.router.navigate(['/csv'])
         }
-        else if(res.status === 401){
-          this.router.navigate(['/'])
+        else if(res.status === 203){
+          this.message = res.body
+          this.msgIsNull = true;
           
         }
-        else if(res.status >= 500){
-          this.router.navigate(['/'])
-          
-        }
+       else if(res.status === 401){
+         this.message = 'Error'
+         this.msgIsNull = true;
+        
+       }
     },
     error => {
       console.log("Error", error);

@@ -1,0 +1,85 @@
+<div class="container ml">
+    <div class="row mt-5">
+        
+            <div class="col-md-3 col-lg-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        Train model
+                    </div>
+                <div class="card-body">
+                    
+                    <div class="card-text">
+                        <form class="form-group" enctype="multipart/form-data">
+                            <input type="text" class="form-control" id="validationDefault01" placeholder="Model name" (change) ="setName($event)" required>
+                            <label for="upload" class="train_label">{{selectedCSVFileName_1}}</label>
+                            <input type="file"  id="upload" accept = '.json,.xls,.csv' (change)="onFileChanged_first($event)">
+                            <label for="upload_file2" class="train_label">{{selectedCSVFileName_2}}</label>
+                            <input type="file"  id="upload_file2" accept = '.json,.xls,.csv' (change)="onFileChanged_second($event)">
+                            
+                           <button type="submit"  class="btn btn-outline-primary btn-lg mt-3" (click)="sendData()">Train</button>
+                        </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-lg-8">
+                
+                <div class="card">
+                    <div class="card-header text-center">
+                        Build a new model
+                    </div>
+                <div class="card-body">
+                    
+                        
+                        <div class="card-text">
+                            <form class="form-group"  enctype="multipart/form-data">
+                                <div class="row">
+                                <div class="col-md-4 col-lg-6">
+                                   <input type="text" class="form-control" id="validationDefault01" placeholder="Model name" (change) ="setName($event)" required>
+                                   <label for="upload_build">{{selectedCSVFileName_1_build}}
+                                   </label>
+                                   <input type="file"  id="upload_build" accept = '.json,.xls,.csv' (change)="onFileChanged_first_build($event)">
+                                   <label for="upload_file2_build">{{selectedCSVFileName_2_build}}</label>
+                                   <input type="file"  id="upload_file2_build" accept = '.json,.xls,.csv' (change)="onFileChanged_second_build($event)">
+                                </div>
+                                <div class="col-md-5 col-lg-6">
+                                    <button class="btn btn-info" (click)="custom()">Customize</button>
+                                    <div class="class" *ngIf="bool">
+                                        <p class="label">Layers's number</p>
+                                        <input type="range" value="6" class = 'custom' min="5" max="20" oninput="this.nextElementSibling.value = this.value">
+                                        <output>6</output>
+                                    </div>
+                                </div>
+                               <input type="submit"  class="btn btn-outline-primary btn-lg mt-3" value = "New Model" (click)="newModel()">
+                               </div>
+                            </form>
+                            <!--Flag variable is used here-->
+   
+    </div>
+                        
+                        
+                
+                    
+                </div>
+                </div>
+                <div class="loading" *ngIf = "load">
+                    <h2>Loading</h2>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+            </div>
+           
+        
+    </div>
+   
+</div>

@@ -1,14 +1,18 @@
 <div id="data">
     <h2>Data-scaling</h2>
 </div>
+<div class="alert alert-danger alert-dismissible fade show" *ngIf = "msgIsNull" role="alert">
+    <p class = 'text-center'>{{message}}</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
 <form class="Lea-data" (ngSubmit)="sendData(dataFrm)" #dataFrm ="ngForm">
     <!-- Name input -->
+    
     <div class="form-outline mb-4">
       <label class="form-label" for="form5Example1">Topic Number</label>
       <input type="text" id="form5Example1" class="form-control" name = "topic_number" [(ngModel)]="myData.topic_number"/>
     </div>
   
-    
     <div class="formfield-select">
 	
         <label for="mon_select" >Angle Name</label>
