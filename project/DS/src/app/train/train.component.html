@@ -10,11 +10,11 @@
                     
                     <div class="card-text">
                         <form class="form-group" enctype="multipart/form-data">
-                            <input type="text" class="form-control" id="validationDefault01" placeholder="Model name" (change) ="setName($event)" required>
+                            <input type="text" class="form-control" id="validationDefault01" placeholder="Model identification" (change) ="setName($event)" required>
                             <label for="upload" class="train_label">{{selectedCSVFileName_1}}</label>
-                            <input type="file"  id="upload" accept = '.json,.xls,.csv' (change)="onFileChanged_first($event)">
+                            <input type="file"  id="upload" accept = '.csv' (change)="onFileChanged_first($event)">
                             <label for="upload_file2" class="train_label">{{selectedCSVFileName_2}}</label>
-                            <input type="file"  id="upload_file2" accept = '.json,.xls,.csv' (change)="onFileChanged_second($event)">
+                            <input type="file"  id="upload_file2" accept = '.csv' (change)="onFileChanged_second($event)">
                             
                            <button type="submit"  class="btn btn-outline-primary btn-lg mt-3" (click)="sendData()">Train</button>
                         </form>
@@ -43,11 +43,22 @@
                                    <input type="file"  id="upload_file2_build" accept = '.json,.xls,.csv' (change)="onFileChanged_second_build($event)">
                                 </div>
                                 <div class="col-md-5 col-lg-6">
-                                    <button class="btn btn-info" (click)="custom()">Customize</button>
+                                    <button class="btn btn-info custom-button" (click)="custom()">Customize</button>
                                     <div class="class" *ngIf="bool">
+                                        
                                         <p class="label">Layers's number</p>
-                                        <input type="range" value="6" class = 'custom' min="5" max="20" oninput="this.nextElementSibling.value = this.value">
+                                        <input type="range" value="6" class = 'custom' min="5" max="10" oninput="this.nextElementSibling.value = this.value" (change)="onHandleRange($event)">
                                         <output>6</output>
+                                        <div *ngIf="isLayers">
+                                           
+
+                                            
+
+
+
+
+
+                                        </div>
                                     </div>
                                 </div>
                                <input type="submit"  class="btn btn-outline-primary btn-lg mt-3" value = "New Model" (click)="newModel()">
@@ -76,10 +87,58 @@
                     <span></span>
                     <span></span>
                 </div>
+                
 
+            </div>
+            <div class="alert alert-danger alert-dismissible shadow" style="border-left:#721C24 5px solid; border-radius: 3px"*ngIf = "message" role="alert">
+                <div class="text-center">
+					<svg width="3em" height="3em" viewBox="0 0 16 16" class="m-1 bi bi-exclamation-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					  <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+					</svg>
+				</div>
+				<p style="font-size:18px" class="text-center font-weight-light"><b class="mr-1">{{message}}</b></p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="close()"></button>
             </div>
            
         
     </div>
-   
+    <div *ngIf="isLayers">
+        <div
+        class="modal"
+        tabindex="-1"
+        role="dialog"
+        [ngStyle]="{'display':displayStyle}">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Enter the neuronal layers</h4>
+            </div>
+            <div class="modal-body">
+               
+                    <form #layers_form = "ngForm" (ngSubmit) = "onClickSubmit(layers_form.value)">
+                        <div class="row">
+                            <div class="col"  *ngFor="let i of range">
+                                <input type="number" class="layer" min="1" max="20" name ="layer_{{i}}" ngModel (keyup)="onKey($event)"/>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-danger alert-dismissible fade show m-5" role="alert">
+                            <p class = 'text-center'>can't provide an Empty layer , layer default value is 10</p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                      <input type="submit" class="btn btn-success mt-3" value="Save" [disabled] = click>
+                    </form>
+            </div>
+            <div class="modal-footer">
+                
+                <button type="button" class="btn btn-danger"
+                        (click)="closePopup()">
+                        close
+                </button>
+            </div>
+            </div>
+        </div>
+        </div>
+        
+    </div>
 </div>

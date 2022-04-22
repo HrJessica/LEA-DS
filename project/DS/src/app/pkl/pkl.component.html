@@ -4,21 +4,27 @@
         <div class="col-lg-10 col-md-12 ml-auto">
 			
 			<div class="row no-gutters">
-			<div class="col-lg-1 col-md-1 ml-auto">	
-			</div>
-			<div class="col-lg-6 col-md-2 ml-auto personalize">	
-				<img src = '../../assets/undraw_click_here_re_y6uq.svg'>
-			</div>
-			<div class="col-lg-5 col-md-5 ml-auto">
 			
+			<div class="col-lg-1 col-md-1 ml-auto">	</div>
+			
+			<div class="col-lg-6 col-md-5 ml-auto personalize">
 				
+				<div class="alert alert-success alert-dismissible fade show" *ngIf = "message" role="alert">
+					<p class = 'text-center'>{{message}}</p>
+					<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+				</div>
+			</div>
+			<div class="col-lg-5 col-md-5 ml-auto pl">
+	
 				<div class="text-center">
 					<div class="score">score :{{score}}</div>
-					<img src = '../../assets/pl.png' width="200px">
+					<img src = '../../assets/pl.png' class="pkl-icon">
 					
 				</div>
 				<div class="text-center"><button class = 'btn btn-lg btn-success' (click)="download_pkl()">Download your model</button></div>
+				<div class="text-center"><button class = 'btn btn-lg btn-primary' data-bs-toggle="modal" data-bs-target="#exampleModal">Train your model</button></div>
 				<div class="text-center"><button class = 'btn btn-lg btn-warning' (click)="test_model()">Test your model</button></div>
+				
 					<div *ngIf="test">
 						<label for="upload">
 							<i class="fa fa-paperclip" aria-hidden="true"></i>{{csvName}}
@@ -34,5 +40,43 @@
 		</div>
 	</div>
 </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Insert files for training your model</h5>
+		  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+			<form class="form-group row" enctype="multipart/form-data">
+				<div class="col-lg-6 col-ms-6 col-xs-6">
+					<label for="file_1" class="label-file">
+						<i class="fa fa-upload"></i>
+						<span>{{filename_1}}</span>
+					</label>
+					<input id="file_1" class="input-file" type="file" (change) ="OnSetFile_1($event)">
+				</div>
+				<div class="col-lg-6 col-ms-6 col-xs-6">
+					<label for="file_2" class="label-file">
+						<i class="fa fa-upload"></i>
+						<span>{{filename_2}}</span>
+					</label>
+					<input id="file_2" class="input-file" type="file" (change) ="OnSetFile_2($event)">
+				</div>
+				
+			</form>
+		</div>
+		<div class="modal-footer">
+		  
+		  <button type="button" class="btn btn-primary" (click)="sendFiles()" data-bs-dismiss="modal">Save changes</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+  
 </div>
 	

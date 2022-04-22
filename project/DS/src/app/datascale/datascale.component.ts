@@ -30,8 +30,8 @@ export class DatascaleComponent implements OnInit {
       res => {
         if(res.status === 200 ||res.status === 302) {
           
-          this.scale.setOption(JSON.stringify(res));
-          
+          this.scale.setOption(JSON.stringify(res.body));
+         
           this.router.navigate(['/csv'])
         }
         else if(res.status === 203){
@@ -44,8 +44,11 @@ export class DatascaleComponent implements OnInit {
          this.msgIsNull = true;
         
        }
+       
     },
     error => {
+      this.message = 'Verify your entry'
+      this.msgIsNull = true;
       console.log("Error", error);
       
         },

@@ -1,10 +1,63 @@
 
-<div class="sidenav">
+<!--<div class="sidenav">
     <a href="/" class="home"><i class="fa fa-home" aria-hidden="true"></i></a>
     <a href="/blur" class="smile"><i class="fa fa-smile-o" aria-hidden="true"></i></a>
     <a href="/scaling" class="sign"><img src="../../assets/icons8-artificial-intelligence-64.png" width="44px"></a>
     <a href="/dashboard" class="file"><i class="fa fa-file" aria-hidden="true"></i></a>
     <a href="/train" class="train"><img src="../../assets/icons8-artificial-intelligence-50.png" width="43px"></a>
-  </div>
-  
-  
+  </div>-->
+
+
+
+
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+            
+            <div class="border-end" id="sidebar-wrapper">
+                <div class="sidebar-heading border-bottom bg-light"></div>
+                <div class="list-group list-group-flush ">
+                  <a href="/" class="home list-group-item list-group-item-action list-group-item-light p-3"><img src="../../assets/home.png" class="icon"></a>
+                  <a href="/blur" class="face list-group-item list-group-item-action list-group-item-light p-3"><img src="../../assets/face-scanner.png" class="icon"></a>
+                  <a href="/scaling" class="scale list-group-item list-group-item-action list-group-item-light p-3"><img src="../../assets/data.png" class="icon"></a>
+                  <a href="/train" class="train list-group-item list-group-item-action list-group-item-light p-3"><img src="../../assets/learning.png" class="icon"></a>
+                  <a href="/dashboard" class="board list-group-item list-group-item-action list-group-item-light p-3"><img src="../../assets/dashboard.png" class="icon"></a>
+                </div>
+            </div>
+            <!-- Page content wrapper-->
+            <div id="page-content-wrapper">
+                <!-- Top navigation-->
+                <nav class="navbar navbar-expand-lg fixed-top border-bottom">
+                    <div class="container-fluid">
+                       <button class="btn btn-default" id="sidebarToggle" data-bs-toggle="collapse" data-bs-target="#sidebar-wrapper"><i class="fa fa-bars" aria-hidden="true"></i>
+                       </button>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                                <li class="nav-item active "><a class="nav-link" href="#!">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#!">Action</a>
+                                        <a class="dropdown-item" href="#!">Another action</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#!">Something else here</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+              
+                <!-- Page content-->
+                <div class="container mt-5">
+                  <app-headers></app-headers>
+                  
+                  <router-outlet></router-outlet>
+                    
+
+                </div>    
+               </div>
+            
+        </div>
+       

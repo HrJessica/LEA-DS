@@ -33,3 +33,76 @@ label{
     margin-right: 3%;
     color: #777;
 }
+.modal{
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+ .modal-dialog{
+   margin-left: 10%;
+ }
+
+ .personalize{
+     
+     background-image: url('../../assets/undraw_click_here_re_y6uq.svg');
+     
+     background-repeat: no-repeat;
+     
+    
+ }
+  
+ .alert{
+     
+     opacity: 0.9;
+     width: 60%;
+     margin-left: 45%;
+ }
+ .pkl-icon{
+     width: 70%;
+ }
+ .modal {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    
+  }
+  
+@media screen and (min-width: 768px) { 
+    .modal:before {
+      display: inline-block;
+      vertical-align: middle;
+      content: " ";
+      height: 100%;
+    }
+  }
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+    width: 100%;
+  }
+
+.label-file {
+    cursor: pointer;
+    color: #00b1ca;
+    
+    border-radius: 0%;
+    padding: 3%;
+    
+    border-color: #aaa;
+    margin-left: 2%;
+    width: 98%;
+}
+.label-file:hover {
+    color: #25a5c4;
+    
+}
+.label-file i{
+    margin-right: 2%;
+}
+.label-file span{
+    color: #00b1ca;
+}
+
+.input-file {
+    display: none;
+   
+}

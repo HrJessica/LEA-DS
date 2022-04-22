@@ -1,15 +1,18 @@
+<div class="container-fluid">
+  
 <div id="blur">
-    <h2>Face-blurring</h2>
+    <h2 class="text-center">Face-blurring</h2>
 </div>
 <div class = "uploaded">
-   <form enctype="multipart/form-data">
+  
+   <form enctype="multipart/form-data" class="form-inline justify-content-center">
         <div class="file-input">
-            <input type="file" id="file" class="file"  (change)="onChange($event)" accept ='.mp4'>
+            <input type="file" id="file" class="file form-control"  (change)="onChange($event)" accept ='.mp4,.mpg,.avi'>
             <label for="file">Select a vidéo  <p class="file-name"></p></label>
-            <input type="submit" value="Send" class="btn-success" (click)="onUpload()"> 
+            <input type="submit" value="Send" class="btn-success form-control" (click)="onUpload()"> 
         </div>
-       
-   </form>
+    </form>
+    
       
     <!--Flag variable is used here-->
     <div class="loading" *ngIf = "_video.loading">
@@ -42,4 +45,5 @@ file.addEventListener('change', (e) => {
 
   </script>
   
+</div>
 </div>

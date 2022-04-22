@@ -17,9 +17,11 @@
   padding-top: 20px;
 }
 .sidenav i{
-  margin-left: 7%;
+  width: 100%;
 }
-
+#page-content-wrapper{
+  width: 100%;
+}
 /* The navigation menu links */
 .sidenav a {
   padding: 8px 8px 6px 30px;
@@ -59,66 +61,56 @@ nav a:nth-child(2):after {
 .home:hover:after{
   content: "Home";
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 18px;
   font-weight: bold;
-  color: white;
-  background-color: rgba(0.5,1,10,0.5);
-  padding: 10px;
-  padding-right: 22px;
-  margin-left: 2%;
+  color: black;
+  
+ 
 }
-.smile:hover:after{
-  content: "Face-blurring";
+.face:hover:after{
+  content: "blurring";
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 15px;
   font-weight: bold;
-  color: white;
-  background-color: rgba(0.5,1,10,0.5);
-  padding-bottom: 8px;
-  padding-top: 15px;
-  padding-right: 22px;
-  padding-left: 8px;
-  margin-left: 2%;
+  color: black;
+ 
 }
-.sign:hover:after{
-  content: "Data-scaling";
+.scale:hover:after{
+  content: "Data-scale";
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 15px;
   font-weight: bold;
-  color: white;
-  background-color: rgba(0.5,1,10,0.5);
-  padding-bottom: 8px;
-  padding-top: 15px;
-  padding-right: 22px;
-  padding-left: 8px;
-  margin-left: 2%;
+  color: black;
 }
-.file:hover:after{
+.board:hover:after{
   content: "Dashboard";
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 15px;
   font-weight: bold;
-  color: white;
-  background-color: rgba(0.5,1,10,0.5);
-  padding-bottom: 8px;
-  padding-top: 15px;
-  padding-right: 22px;
-  padding-left: 8px;
-  margin-left: 2%;
+  color: black;
 }
 .train:hover:after{
   content: "Train";
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 15px;
   font-weight: bold;
-  color: white;
-  background-color: rgba(0.5,1,10,0.5);
-  padding-bottom: 8px;
-  padding-top: 15px;
-  padding-right: 22px;
-  padding-left: 8px;
-  margin-left: 2%;
+  color: black;
+  
 }
 .sidebar a:visited{
   color: #3333
+}
+.icon{
+  width: 35px;
+  height: 35px;
+  color: white;
+}
+.navbar{
+  background-color: #1CC5DC;
+  
+  
+}
+.navbar button{
+  color: white;
+}
+.navbar li a{
+  color: white;
+}
+.dropdown-menu a{
+  color: black;
 }

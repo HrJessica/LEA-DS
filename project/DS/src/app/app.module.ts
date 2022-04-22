@@ -19,6 +19,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { TrainComponent } from './train/train.component';
 import { PklComponent } from './pkl/pkl.component';
 import { PredictFileComponent } from './predict-file/predict-file.component';
+import { ModalOptionsComponent } from './modal-options/modal-options.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { PredictFileComponent } from './predict-file/predict-file.component';
     TrainComponent,
     PklComponent,
     PredictFileComponent,
-   
+    ModalOptionsComponent,
+    
   ],
   imports: [
     BrowserModule,

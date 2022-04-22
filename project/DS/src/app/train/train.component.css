@@ -55,6 +55,11 @@ label {
      margin-left: 15%;
     
  }
+ .custom-button{
+   margin-left: 2%;
+   margin-top: 1%;
+   font-weight: 700;
+ }
  output{
      margin-left: 3%;
      font-weight: 500;
@@ -151,4 +156,22 @@ label {
       opacity: 1;
     }
   }
- 
+  .modal{
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+ .btn-danger,.btn-success{
+   width: 15%;
+   float: right;
+ }
+ .layer{
+   width: 50%;
+ }
+ .modal-dialog{
+   margin-left: 10%;
+ }
+.alert-danger{
+  margin-left: 30%;
+  margin-right: 30%;
+  width: 40%;
+  margin-top: 1%;
+}

@@ -6,9 +6,9 @@ import { map,catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ScaleserviceService {
-  public fileContent: string;
+  public fileContent!: string;
   constructor(private http:HttpClient) { 
-    this.fileContent = '';
+  
   }
   server_address = "http://localhost:5000/scaling";
   
